@@ -16,9 +16,9 @@
 title: MM
 email:
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  This will be just a random collection of my thoughts and writings. Some
+  will focus on technical math and/or programming things, some may be more
+  lighthearted.
 twitter_username: username
 github_username: axmanmuscle
 repository: axmanmuscle/axmanmuscle.github.io
@@ -59,9 +59,9 @@ plugins:
   - jekyll-include-cache
 
 author:
-  name   : "First Lastname"
-  avatar : "/assets/images/bio-photo.jpg"
-  bio    : "My awesome biography constrained to a sentence or two goes here."
+  name   : "Alex McManus"
+  avatar : "/assets/images/bio-photo.jpeg"
+  bio    : "Resident math nerd. Professional coffee drinker."
   links:
     - label: "Website"
       icon: "fas fa-fw fa-link"
@@ -71,7 +71,7 @@ author:
       url: "https://twitter.com/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
+      url: "https://github.com/axmanmuscle"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       url: "https://instagram.com/"
