@@ -13,13 +13,13 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: MM
-email:
+title: axmanmuscle
+email: alex.tmcmanus@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   This will be just a random collection of my thoughts and writings. Some
   will focus on technical math and/or programming things, some may be more
   lighthearted.
-twitter_username: username
+twitter_username: amcmanus23
 github_username: axmanmuscle
 repository: axmanmuscle/axmanmuscle.github.io
 minimal_mistakes_skin: default
@@ -65,10 +65,10 @@ author:
   links:
     - label: "Website"
       icon: "fas fa-fw fa-link"
-      url: "https://"
+      url: "https://axmanmuscle.github.io"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/"
+      url: "https://twitter.com/amcmanus23"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/axmanmuscle"
@@ -80,10 +80,10 @@ footer:
   links:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/"
+      url: "https://twitter.com/amcmanus23"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
+      url: "https://github.com/axmanmuscle"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       url: "https://instagram.com/"

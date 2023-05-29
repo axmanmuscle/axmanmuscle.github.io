@@ -27,7 +27,7 @@ Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most ou
 here's some LaTeX:
 
 $$
-e^{-1\pi} + 1 = 0
+e^{i\pi} + 1 = 0
 $$
 
 [jekyll-docs]: https://jekyllrb.com/docs/home

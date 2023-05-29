@@ -40,4 +40,16 @@ var store = [{
         "tags": ["Jekyll","update"],
         "url": "/blog/welcome-to-jekyll/",
         "teaser": null
+      },{
+        "title": "Bayesian Optimization Pt. 1",
+        "excerpt":"Let’s discuss Bayesian Optimization. This will be the first in a string of technical posts. Introduction Bayesian optimization is a technique for optimizing black-box functions that are expensive to evaluate and for which we have no gradient (in many cases, the gradient doesn’t even exist). Lately, this has typically been...","categories": ["blog","math","bayes"],
+        "tags": ["Jekyll","update","Bayesian"],
+        "url": "/blog/math/bayes/bayesian-opt-pt-1/",
+        "teaser": null
+      },{
+        "title": "TrueSkill pt. 1",
+        "excerpt":"This is a technical post about the algorithm TrueSkill. You can see the source code here. Introduction Trueskill is a Bayesian skill rating system developed by Bungie and Microsoft for Xbox live. It was developed because the Elo algorithm (commonly known in chess) was insufficient for the types of rating...","categories": ["blog","math","trueskill"],
+        "tags": ["Jekyll","update","trueskill"],
+        "url": "/blog/math/trueskill/trueskill-pt-1/",
+        "teaser": null
       }]

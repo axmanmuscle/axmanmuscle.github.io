@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Welcome to Jekyll! - axmanmuscle</title>
-<meta name="description" content="You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.">
+<!-- begin _includes/seo.html --><title>Bayesian Optimization Pt. 1 - axmanmuscle</title>
+<meta name="description" content="Let’s discuss Bayesian Optimization. This will be the first in a string of technical posts.">
 
 
   <meta name="author" content="Alex McManus">
@@ -22,26 +22,26 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="axmanmuscle">
-<meta property="og:title" content="Welcome to Jekyll!">
-<meta property="og:url" content="http://localhost:4000/blog/welcome-to-jekyll/">
+<meta property="og:title" content="Bayesian Optimization Pt. 1">
+<meta property="og:url" content="http://localhost:4000/blog/math/bayes/bayesian-opt-pt-1/">
 
 
-  <meta property="og:description" content="You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2019-04-18T13:34:30-06:00">
+  <meta property="og:description" content="Let’s discuss Bayesian Optimization. This will be the first in a string of technical posts.">
 
 
 
 
 
 
-<link rel="canonical" href="http://localhost:4000/blog/welcome-to-jekyll/">
+
+  <meta property="article:published_time" content="2023-05-05T15:00:00-06:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/blog/math/bayes/bayesian-opt-pt-1/">
 
 
 
@@ -263,16 +263,16 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Welcome to Jekyll!">
-    <meta itemprop="description" content="You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.">
-    <meta itemprop="datePublished" content="2019-04-18T13:34:30-06:00">
+    <meta itemprop="headline" content="Bayesian Optimization Pt. 1">
+    <meta itemprop="description" content="Let’s discuss Bayesian Optimization. This will be the first in a string of technical posts.">
+    <meta itemprop="datePublished" content="2023-05-05T15:00:00-06:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/blog/welcome-to-jekyll/" class="u-url" itemprop="url">Welcome to Jekyll!
+            <a href="http://localhost:4000/blog/math/bayes/bayesian-opt-pt-1/" class="u-url" itemprop="url">Bayesian Optimization Pt. 1
 </a>
           </h1>
           
@@ -301,25 +301,12 @@
 
       <section class="page__content e-content" itemprop="text">
         
-        <p>You’ll find this post in your <code class="language-plaintext highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="language-plaintext highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+        <p><em>Let’s discuss Bayesian Optimization. This will be the first in a string of technical posts.</em></p>
 
-<p>To add new posts, simply add a file in the <code class="language-plaintext highlighter-rouge">_posts</code> directory that follows the convention <code class="language-plaintext highlighter-rouge">YYYY-MM-DD-name-of-post.ext</code> and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.</p>
+<h2 id="introduction">Introduction</h2>
+<p>Bayesian optimization is a technique for optimizing black-box functions that are expensive to evaluate and for which we have no gradient (in many cases, the gradient doesn’t even exist). Lately, this has typically been used in the context of hyperparameter tuning of machine learning models. The main idea behind Bayesian optimization is to use a probabilistic model to approximate the unknown function being optimized and to use this model to guide the search for the optimum.</p>
 
-<p>Jekyll also offers powerful support for code snippets:</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
-  <span class="nb">puts</span> <span class="s2">"Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
-<span class="k">end</span>
-<span class="n">print_hi</span><span class="p">(</span><span class="s1">'Tom'</span><span class="p">)</span>
-<span class="c1">#=&gt; prints 'Hi, Tom' to STDOUT.</span>
-</code></pre></div></div>
-
-<p>Check out the <a href="https://jekyllrb.com/docs/home">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://talk.jekyllrb.com/">Jekyll Talk</a>.</p>
-
-<p>here’s some LaTeX:</p>
-
-\[e^{i\pi} + 1 = 0\]
-
+<p>The most commonly used probabilistic model is called a <strong>Gaussian process</strong> (GP). GP’s are straightforward extensions of a typical Gaussian (or normal) distribution. More specifically, these are <em>stochastic processes</em> where each <em>realization</em> is a Gaussian distribution. Don’t worry, that’s not really important for understanding what’s going on here. Just imaginge it’s an infinite dimensional probability distribution (as if that’s any easier).</p>
 
         
       </section>
@@ -335,6 +322,8 @@
   <p class="page__taxonomy">
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
     <span itemprop="keywords">
+    
+      <a href="/tags/#bayesian" class="page__taxonomy-item p-category" rel="tag">Bayesian</a><span class="sep">, </span>
     
       <a href="/tags/#jekyll" class="page__taxonomy-item p-category" rel="tag">Jekyll</a><span class="sep">, </span>
     
@@ -355,7 +344,11 @@
     <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
     <span itemprop="keywords">
     
-      <a href="/categories/#blog" class="page__taxonomy-item p-category" rel="tag">blog</a>
+      <a href="/categories/#bayes" class="page__taxonomy-item p-category" rel="tag">bayes</a><span class="sep">, </span>
+    
+      <a href="/categories/#blog" class="page__taxonomy-item p-category" rel="tag">blog</a><span class="sep">, </span>
+    
+      <a href="/categories/#math" class="page__taxonomy-item p-category" rel="tag">math</a>
     
     </span>
   </p>
@@ -363,29 +356,29 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2019-04-18T13:34:30-06:00">April 18, 2019</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2023-05-05T15:00:00-06:00">May 5, 2023</time></p>
 
       </footer>
 
       <section class="page__share">
   
 
-  <a href="https://twitter.com/intent/tweet?text=Welcome+to+Jekyll%21%20http%3A%2F%2Flocalhost%3A4000%2Fblog%2Fwelcome-to-jekyll%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Bayesian+Optimization+Pt.+1%20http%3A%2F%2Flocalhost%3A4000%2Fblog%2Fmath%2Fbayes%2Fbayesian-opt-pt-1%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fblog%2Fwelcome-to-jekyll%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fblog%2Fmath%2Fbayes%2Fbayesian-opt-pt-1%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fblog%2Fwelcome-to-jekyll%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fblog%2Fmath%2Fbayes%2Fbayesian-opt-pt-1%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/blog/post-link/" class="pagination--pager" title="Post: Link
+      <a href="/blog/welcome-to-jekyll/" class="pagination--pager" title="Welcome to Jekyll!
 ">Previous</a>
     
     
-      <a href="/blog/math/bayes/bayesian-opt-pt-1/" class="pagination--pager" title="Bayesian Optimization Pt. 1
+      <a href="/blog/math/trueskill/trueskill-pt-1/" class="pagination--pager" title="TrueSkill pt. 1
 ">Next</a>
     
   </nav>
@@ -451,7 +444,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/blog/math/bayes/bayesian-opt-pt-1/" rel="permalink">Bayesian Optimization Pt. 1
+        <a href="/blog/welcome-to-jekyll/" rel="permalink">Welcome to Jekyll!
 </a>
       
     </h2>
@@ -476,9 +469,7 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">Let’s discuss Bayesian Optimization. This will be the first in a string of technical posts.
-
-</p>
+    <p class="archive__item-excerpt" itemprop="description">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different wa...</p>
   </article>
 </div>
 
