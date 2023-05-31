@@ -2,12 +2,9 @@
 title: "Bayesian Optimization Pt. 1"
 date: 2023-05-05T15:00:00-06:00
 categories:
-  - blog
   - math
-  - bayes
 tags:
-  - Jekyll
-  - update
+  - optimization
   - Bayesian
 ---
 

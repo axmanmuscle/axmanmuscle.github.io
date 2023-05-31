@@ -1,20 +1,14 @@
 ---
-title: "TrueSkill pt. 1"
-date: 2023-05-15T15:00:00-06:00
+title: "TrueSkill pt. 1: Introduction"
+last_modified_at: 2023-05-30
 categories:
-  - blog
-  - math
   - trueskill
 tags:
-  - Jekyll
-  - update
   - trueskill
+  - math
 ---
 
-This is a technical post about the algorithm TrueSkill. You can see the source code [here](https://github.com/axmanmuscle/trueskill).
-
-## Introduction
-Trueskill is a Bayesian skill rating system developed by Bungie and Microsoft for Xbox live. It was developed because the Elo algorithm (commonly known in chess) was insufficient for the types of rating computations that are needed for matchmaking in online video games. Elo takes a nice update approach based on the difference between the two players' Elo ratings going into the match.
+This is an introductory post about the algorithm TrueSkill. You can see my source code [here](https://github.com/axmanmuscle/trueskill). You can also read the [the original paper](https://www.microsoft.com/en-us/research/wp-content/uploads/2007/01/NIPS2006_0688.pdf).
 
 ## Elo
 
@@ -26,14 +20,19 @@ $$
 
 where $\Psi$ denotes the cumulative probability density of a zero-mean unit-variance Gaussian.
 
-## Bayesian Statistics
-There are a million words written about Bayesian statistics elsewhere on the internet, written by people much smarter and more eloquent than me. The main result from the Bayesian formulation of statistics is _Bayes' rule_: 
+After the game, the skill ratings $s_1$ and $s_2$ are updated such that the observed game's outcome becomes more likely, and the combined skill rating $s_1 + s_2$ remains constant. Suppose we set $y = +1$ if player 1 wins, $y = -1$ if player 2 wins, and $y = 0$ if it's a draw. The resulting (linearized) Elo update is given by $s_1 \leftarrow s_1 + y\Delta$, $s_2 \leftarrow s_2 - y\Delta$, with
 
 $$
-P(A \, \vert \, B) = \frac{P(B \, \vert \, A) P(A)}{P(B)}.
+\Delta = \alpha \beta \sqrt{\pi}\left(\frac{y+1}{2} - \Psi\left(\frac{s_1 - s_2}{\sqrt{2\beta}}\right)\right).
 $$
 
-__This maybe deserves its own set of posts__.
+Elo is a fine system for two-player games. It becomes a bit more challenging to imagine an extension of this system for multiple teams of multiple players. There's some challenges with online games:
+
+1. The outcomes of games are usually based on _team_ performance instead of individual performance. 
+2. When multiple teams compete the outcome is a permutation of the teams involved instead of simply a winner and a loser.
+3. Over time, arbitrary teams of arbitrary players compete, making it difficult to isolate an individual player's performance.
+
+TrueSkill as a system is designed to address these challenges.
 
 ## TrueSkill
 
@@ -46,13 +45,7 @@ The main part of the algorithm is the _factor graph_. This is just a fancy way t
 The factor graph is called that because it takes the shape of a directed graph. The example from the paper (__which we'll be referring back to quite often__) has a factor graph given by the below picture. In this example, there are four players across three teams, with team 1 winning and teams 2 and 3 tying. ![alt text](/assets/images/ts.png)
 
 #### Outline
-__Okay, here's the outline:__
-- Factor graph
-  - Prior nodes
-  - Likelihood nodes
-  - Sum/difference nodes
-  - Truncation nodes
-- Update equations
-- Messages vs. Value
-- Graph structure
-- Actual implementation?
+__Okay, here's the outline of the rest of the posts:__
+- Part 2: Factor graphs
+- Part 3: Update equations
+- Part 4: Implementation
