@@ -36,13 +36,16 @@ TrueSkill as a system is designed to address these challenges.
 
 ## TrueSkill
 
-TrueSkill uses a _Bayesian_ framework for updating our belief in a player's skill. What does this mean from a technical perspective? Really, it means that our belief in each player's ability is modeled as a _Gaussian_ (or _normal_) distribution. We use the information from the game to update this Gaussian distribution using _Bayes rule_.
+TrueSkill uses a _Bayesian_ framework for updating our belief in a player's skill. What does this mean from a technical perspective? Really, it means that our belief in each player's ability is modeled as a _Gaussian_ (or _normal_) distribution. We use the information from the game to update this Gaussian distribution using _Bayes' rule_.
 
-### Factor Graph
+The idea behind the algorithm is relatively simple. 
+  - We model each player's skill as a Gaussian random variable.
+  - Each player's _performance_ in a game is a random draw from a Gaussian distribution whose mean is the player's skill.
+  - Each team's performance is the sum of performance of the players on that team. 
+  - We update each team's distribution based on the actual performance from the game.
+  - We update the player's performance based on the team performance, and the player's skill based on their performance.
 
-The main part of the algorithm is the _factor graph_. This is just a fancy way to draw out how our marginal distributions are all related to each other. I'll leave the description of the factor graph to [the original paper](https://www.microsoft.com/en-us/research/wp-content/uploads/2007/01/NIPS2006_0688.pdf). In terms of implementation of the algorithm, however, this is clearly the most important part. Understanding how to represent each type of node along with keeping track of the _messages_ and the _values_ and the _variables_ for each node is the most burdensome part of the algorithm.
-
-The factor graph is called that because it takes the shape of a directed graph. The example from the paper (__which we'll be referring back to quite often__) has a factor graph given by the below picture. In this example, there are four players across three teams, with team 1 winning and teams 2 and 3 tying. ![alt text](/assets/images/ts.png)
+This is the main idea --- everything else is just implementation details.
 
 #### Outline
 __Okay, here's the outline of the rest of the posts:__
