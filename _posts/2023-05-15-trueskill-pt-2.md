@@ -34,7 +34,16 @@ This is our first node that has more than one component --- we'll refer to a per
 
 The performance of all players on a team now get _added_ into a team performance value. "But Alex," you ask, "how do we add two things that are random variables?" That's an excellent question. In general, a random variable is associated with a function called its _probability distribution function_ (or pdf). The distribution of the sum of random variables is governed by the _convolution_ of their pdfs. 
 
-In this case, our assumption that all variables so far have a Gaussian distribution pays dividends. The convolution of Gaussian pdfs stays a Gaussian. I may add a proof of this to a probability post here, but we're getting a bit far afield from the task at hand. Suffice it to say that this distribution stays Gaussian (with a relatively easy formula). This is best illustrated by the middle team of the above picture --- note how the third layer has a label that says $\mathbb{I}(t_2 = p_2 + p_3)$.
+In this case, our assumption that all variables so far have a Gaussian distribution pays dividends. The convolution of Gaussian pdfs stays a Gaussian. I may add a proof of this to a probability post here, but we're getting a bit far afield from the task at hand. Suffice it to say that this distribution stays Gaussian (with a relatively easy formula). This is best illustrated by the middle team of the above picture --- note how the third layer has a label that says $\mathbb{I}(t_2 = p_2 + p_3)$. This is probability speak for an _indicator variable_, but all that it's really saying is that the variable of the node $t_2$ is exactly the sum of $p_2$ and $p_3$. 
+
+Our assumption up until now has been that all of these variables are Gaussians. Luckily the sum of Gaussians is also Gaussian, so we haven't violated that assumption (yet!).
+
+### Team Difference Node
+Now we get to the difference between teams -- basically, which team won (or, in the case of a game with multiple teams per match, what order did the teams place in). Each node here has two inputs (the two teams) and one output (the difference of the two teams distributions). 
+
+Things get kind of funky here. This system is designed for games that allow ties --- chess, for example. The way to think about this in a Bayesian context is that a game is a tie (or two teams are tied) if the _difference in their distributions is less than some small number_ $\varepsilon$. A difference greater than $\varepsilon$ then corresponds to a "clean win" (or a team clearly placing above another). This is what the output of the team difference node and the very bottom level of the factor graph signify. 
+
+This complicates things now. The difference of two Gaussian distributions, in general, is _not_ Gaussian. This becomes the hardest part of the factor graph to deal with since the marginal distributions are now non-analytical.
 
 #### Outline
 __Okay, here's the outline of the rest of the posts:__
