@@ -45,6 +45,7 @@ Things get kind of funky here. This system is designed for games that allow ties
 
 This complicates things now. The difference of two Gaussian distributions, in general, is _not_ Gaussian. This becomes the hardest part of the factor graph to deal with since the marginal distributions are now non-analytical.
 
+
 #### Outline
 __Okay, here's the outline of the rest of the posts:__
 - Part 2: Factor graphs
