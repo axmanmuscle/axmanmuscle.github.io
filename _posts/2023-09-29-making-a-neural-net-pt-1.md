@@ -21,7 +21,7 @@ To begin, we're going to use a (very simple) neural network to estimate $f(x) = 
 $$(2, 4), \, (4, 16), \, (2.5, 6.25), \ldots$$
 where the first number $x$ is the input to the network and the second number $y := f(x)$ is the training data. "Training data" what do I mean by this? Let's start by talking about what "training" a neural network actually means.
 
-![nn1](/axmanmuscle.github.io/assets/nn1.png)
+![nn1](https://github.com/axmanmuscle/axmanmuscle.github.io/blob/gh-pages/assets/nn1.png)
 
 #### Training 
 Let our network be a function $N(x)$. With our current architecture, this is taking in a scalar $x$ and outputting a scalar $N(x)$, so we'll write $N : \mathbb{R} \to \mathbb{R}$. This is not always the case (in fact is rarely the case) in actual machine learning. Usually our input is a vector or a matrix (or sometimes a tensor), and the output can be a vector or a matrix as well. But, this simple case will illustrate what training means.
