@@ -27,13 +27,13 @@ where the first number $x$ is the input to the network and the second number $y 
 Let our network be a function $N(x)$. With our current architecture, this is taking in a scalar $x$ and outputting a scalar $N(x)$, so we'll write $N : \mathbb{R} \to \mathbb{R}$. This is not always the case (in fact is rarely the case) in actual machine learning. Usually our input is a vector or a matrix (or sometimes a tensor), and the output can be a vector or a matrix as well. But, this simple case will illustrate what training means.
 
 We'll use a loss function called $L$. In this case, $L$ takes in the output of the network and its associated training data and gives us the "distance" between these two. A very common loss function is mean-squared error (or MSE):
-$$L(y, \hat{y}) = \frac{1}{2}\lVert y - \hat{y} \rVert_2^2 \tag{1} \label{eq: mse} $$ 
+$$\label{eq:mse} L(y, \hat{y}) = \frac{1}{2}\lVert y - \hat{y} \rVert_2^2 \tag{1}  $$ 
 The double bar means we're computing a _norm_. Since our current network is just scalars, this will just be the absolute value. [^1]
 To make $\eqref{eq:mse}$ a little more clear (or less clear, depending...) I'll write
 $$\hat{y} := N(x\,;\,\theta)$$
-is the output of the network $N$ with input $x$ and parameters $\theta$. I'm writing it like this to show why $\eqref{eq:mse}$ allows us to update the _parameters_ (things like the weights and biases) of our network $N$.
+is the output of the network $N$ with input $x$ and parameters $\theta$. I'm writing it like this to show why $\eqref{mse}$ allows us to update the _parameters_ (things like the weights and biases) of our network $N$.
 
 [^1]: Since we're squaring the difference, we actually don't need the absolute value. This is the common _least squares_ problem, usually introduced in a statistics class for things like fitting a line to data.
 
 #### Derivatives
-Now let's think about the derivatives of our loss function _with respect to our parameters_ $\theta$. Why $\theta$? We want to minimize $\eqref{eq:mse}$ with respect to our parameters - that's what we have control over. So let's start writing out what our network response function is in term of our parameters. This is going to require a more intense description of our network. Let's leave this for the next post.
+Now let's think about the derivatives of our loss function _with respect to our parameters_ $\theta$. Why $\theta$? We want to minimize $\eqref{mse}$ with respect to our parameters - that's what we have control over. So let's start writing out what our network response function is in term of our parameters. This is going to require a more intense description of our network. Let's leave this for the next post.
